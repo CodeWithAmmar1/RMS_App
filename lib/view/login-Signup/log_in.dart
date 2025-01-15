@@ -1,20 +1,18 @@
 import 'package:animated_background/animated_background.dart';
-import 'package:app/controller/sign_up_controller.dart';
-
+import 'package:app/controller/login_signup_controller/log_in_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<SignUp> createState() => _SignupState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignupState extends State<SignUp> with SingleTickerProviderStateMixin {
-  final SignupController _signupController = Get.put(SignupController());
-
+class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
+  final LoginController _loginController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +57,7 @@ class _SignupState extends State<SignUp> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   const Text(
-                    "SIGNUP",
+                    "LOGIN",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -70,7 +68,7 @@ class _SignupState extends State<SignUp> with SingleTickerProviderStateMixin {
                   ),
                   TextField(
                     style: const TextStyle(color: Colors.white, fontSize: 16),
-                    controller: _signupController.emailController,
+                    controller: _loginController.text,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
@@ -98,8 +96,8 @@ class _SignupState extends State<SignUp> with SingleTickerProviderStateMixin {
                     () => TextField(
                       style: const TextStyle(color: Colors.white, fontSize: 18),
                       textAlign: TextAlign.start,
-                      controller: _signupController.passwordController,
-                      obscureText: _signupController.hide.value,
+                      controller: _loginController.pass,
+                      obscureText: _loginController.hide.value,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25),
@@ -115,7 +113,7 @@ class _SignupState extends State<SignUp> with SingleTickerProviderStateMixin {
                         ),
                         suffix: IconButton(
                             onPressed: () {
-                              _signupController.hideFun();
+                              _loginController.hideFun();
                             },
                             icon: const Icon(
                               Icons.remove_red_eye_outlined,
@@ -130,16 +128,16 @@ class _SignupState extends State<SignUp> with SingleTickerProviderStateMixin {
                   ),
                   const SizedBox(height: 20),
                   Obx(
-                    () => _signupController.isLoading.value
+                    () => _loginController.isLoading.value
                         ? const CircularProgressIndicator(
                             color: Colors.blue,
                           )
                         : ElevatedButton(
                             onPressed: () {
-                              _signupController.signupFun(context);
+                              _loginController.loginFun(context);
                             },
                             child: const Text(
-                              "Sign Up",
+                              "login",
                               style: TextStyle(fontSize: 20),
                             ),
                             style: ElevatedButton.styleFrom(
@@ -152,14 +150,25 @@ class _SignupState extends State<SignUp> with SingleTickerProviderStateMixin {
                   SizedBox(
                     height: 20,
                   ),
-                  TextButton(
-                      onPressed: () {
-                        _signupController.gologin();
-                      },
-                      child: Text(
-                        "Login your Account",
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Did not have account?",
                         style: TextStyle(color: Colors.white),
-                      ))
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            _loginController.gosignup();
+                          },
+                          child: const Text(
+                            "SIGN UP",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ))
+                    ],
+                  ),
                 ],
               ),
             ),
