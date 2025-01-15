@@ -1,11 +1,15 @@
+import 'package:app/controller/load_controller/load1_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Load1 extends StatelessWidget {
-  const Load1({super.key});
-
+  Load1({super.key});
+  final Load1Controller _load1controller = Get.put(Load1Controller());
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic> arguments = Get.arguments ?? {};
+    final String image = arguments['image'] ?? '';
+    final String title = arguments['title'] ?? '';
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
@@ -15,17 +19,17 @@ class Load1 extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: Colors.white, width: 2),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(color: Colors.blue, blurRadius: 15, spreadRadius: 6)
               ],
-              image: DecorationImage(
+              image: const DecorationImage(
                   image: AssetImage("asset/wall.jpg"), fit: BoxFit.cover)),
           child: Column(
             children: [
               SizedBox(
                 width: Get.width * 0.4,
                 child: Image.asset(
-                  "asset/bulb.png",
+                  image,
                   fit: BoxFit.contain,
                 ),
               ),
@@ -33,14 +37,24 @@ class Load1 extends StatelessWidget {
                 height: Get.height * 0.02,
               ),
               Text(
-                "LOAD 1 CONTROL",
+                title,
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
               SizedBox(
-                height: Get.height * 0.04,
+                height: Get.height * 0.03,
+              ),
+              const Text(
+                "Intensity",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              SizedBox(
+                height: Get.height * 0.01,
               ),
               Container(
                 height: Get.height * 0.1,
@@ -50,16 +64,29 @@ class Load1 extends StatelessWidget {
                   color: Colors.blue.withOpacity(0.3),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                        onPressed: () {},
-                        icon: Container(
-                          decoration: BoxDecoration(shape: BoxShape.circle),
-                          child: Icon(
-                            Icons.minimize_rounded,
-                            size: 50,
-                          ),
-                        ))
+                        onPressed: () {
+                          _load1controller.subCount();
+                        },
+                        icon: const Icon(Icons.remove,
+                            size: 40, color: Colors.white)),
+                    Obx(
+                      () => Text(
+                        "${_load1controller.count}%",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                            color: Colors.white),
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          _load1controller.addCount();
+                        },
+                        icon: const Icon(Icons.add,
+                            size: 40, color: Colors.white))
                   ],
                 ),
               )

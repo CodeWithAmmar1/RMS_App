@@ -53,12 +53,18 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   Menu1(
-                    onTextTap: () => Get.to(() => const Load1()),
+                    onTextTap: () => Get.to(() => Load1(), arguments: {
+                      'image': "asset/bulb.png",
+                      'title': "LOAD 1 CONTROL"
+                    }),
                     image: "asset/bulb.png",
                     text: "LOAD 1",
                   ),
                   Menu2(
-                    onTextTap: () => Get.to(() => const Load1()),
+                    onTextTap: () => Get.to(() => Load1(), arguments: {
+                      'image': "asset/fan.png",
+                      'title': "LOAD 2 CONTROL"
+                    }),
                     image: "asset/fan.png",
                     text: "LOAD 2",
                   ),
@@ -72,7 +78,10 @@ class HomePage extends StatelessWidget {
                     text: "LED TV",
                   ),
                   Menu4(
-                    onTextTap: () => Get.to(() => const Load1()),
+                    onTextTap: () => Get.to(() => Load1(), arguments: {
+                      'image': "asset/damper.png",
+                      'title': "LOAD 3 CONTROL"
+                    }),
                     image: "asset/damper.png",
                     text: "DAMPER",
                   ),
