@@ -4,6 +4,7 @@ import 'package:app/utilz/menu3.dart';
 import 'package:app/utilz/menu4.dart';
 import 'package:app/utilz/name_banner.dart';
 import 'package:app/utilz/temperature_banner.dart';
+import 'package:app/view/damper_control/damper.dart';
 import 'package:app/view/load1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -78,7 +79,7 @@ class HomePage extends StatelessWidget {
                     text: "LED TV",
                   ),
                   Menu4(
-                    onTextTap: () => Get.to(() => Load1(), arguments: {
+                    onTextTap: () => Get.to(() => Damper(), arguments: {
                       'image': "asset/damper.png",
                       'title': "LOAD 3 CONTROL"
                     }),

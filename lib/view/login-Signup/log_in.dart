@@ -136,18 +136,18 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                             onPressed: () {
                               _loginController.loginFun(context);
                             },
-                            child: const Text(
-                              "login",
-                              style: TextStyle(fontSize: 20),
-                            ),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue,
                                 foregroundColor: Colors.white,
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 100)),
+                            child: const Text(
+                              "login",
+                              style: TextStyle(fontSize: 20),
+                            ),
                           ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(

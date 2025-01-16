@@ -16,7 +16,7 @@ class SignupController extends GetxController {
     if (emailController.text.isEmpty || passwordController.text.isEmpty) {
       var snackBar = SnackBar(
         content: const Text('All fields are required'),
-        backgroundColor: const Color(0xffFF5A5F),
+        backgroundColor: Colors.blue,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -47,7 +47,7 @@ class SignupController extends GetxController {
 
         var snackBar = SnackBar(
           content: Text('The account is created for ${credential.user!.email}'),
-          backgroundColor: const Color(0xffFF5A5F),
+          backgroundColor: Colors.blue,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -65,7 +65,7 @@ class SignupController extends GetxController {
         isLoading.value = false;
         var snackBar = SnackBar(
           content: Text('Firestore Error: $firestoreError'),
-          backgroundColor: const Color(0xffFF5A5F),
+          backgroundColor: Colors.blue,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -88,7 +88,7 @@ class SignupController extends GetxController {
 
       var snackBar = SnackBar(
         content: Text(errorMessage),
-        backgroundColor: const Color(0xffFF5A5F),
+        backgroundColor: Colors.blue,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -102,7 +102,7 @@ class SignupController extends GetxController {
 
       var snackBar = SnackBar(
         content: Text('Unexpected Error: $e'),
-        backgroundColor: const Color(0xffFF5A5F),
+        backgroundColor: Colors.blue,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),

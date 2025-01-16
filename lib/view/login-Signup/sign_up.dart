@@ -138,25 +138,25 @@ class _SignupState extends State<SignUp> with SingleTickerProviderStateMixin {
                             onPressed: () {
                               _signupController.signupFun(context);
                             },
-                            child: const Text(
-                              "Sign Up",
-                              style: TextStyle(fontSize: 20),
-                            ),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue,
                                 foregroundColor: Colors.white,
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 100)),
+                            child: const Text(
+                              "Sign Up",
+                              style: TextStyle(fontSize: 20),
+                            ),
                           ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextButton(
                       onPressed: () {
                         _signupController.gologin();
                       },
-                      child: Text(
+                      child: const Text(
                         "Login your Account",
                         style: TextStyle(color: Colors.white),
                       ))
